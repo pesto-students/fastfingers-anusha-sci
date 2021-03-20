@@ -1,7 +1,12 @@
 .App {
   text-align: center;
+  width: 100vw;
 }
-
+.background-img{
+  width: 1920px;
+  opacity:0.43;
+ 
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

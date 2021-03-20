@@ -1,0 +1,18 @@
+.scoreBoard-section {
+  border: 1px solid #ff5155;
+  border-radius: 15px;
+  
+  margin-left: 3rem;
+}
+
+.scoreBoard-section li {
+  list-style: none;
+  color: #ffffff;
+  width: fit-content;
+}
+
+.scoreBoard-section p {
+  font-size: 11px;
+  padding-left: 1rem;
+  width: fit-content;
+}
