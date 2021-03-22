@@ -35,7 +35,7 @@ export default function CircularTimer1({roundTime , endTime, callBack}) {
 
     }
 
-  },[roundTime,endTime])
+  },[roundTime,endTime,callBack])
 
   let timeRemaining = Math.max(0,endTime -Date.now())
   let remainingSeconds = Math.floor( timeRemaining/1000)

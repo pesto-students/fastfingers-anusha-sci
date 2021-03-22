@@ -19,7 +19,7 @@ export default function LiveScore({isGameOver, callBack}){
         clearInterval(isInterval)
       }
     }
-  },[isGameOver]
+  },[isGameOver, callBack, elapsedTime]
   )
 
   return(
