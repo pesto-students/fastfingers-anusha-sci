@@ -15,9 +15,7 @@ export default function ScoreBoard() {
     setScoreArray(JSON.parse(window.sessionStorage.getItem("scoreArray")))
     setHighestScore(JSON.parse(window.sessionStorage.getItem("highestScore"))["score"])
     setHighScoreIndex(JSON.parse(window.sessionStorage.getItem("highestScore"))["index"])
-    console.log("in effect:")
-    console.log(JSON.parse(window.sessionStorage.getItem("highestScore"))["score"])
-    console.log(JSON.parse(window.sessionStorage.getItem("highestScore"))["index"])
+
   } , [])
 
   

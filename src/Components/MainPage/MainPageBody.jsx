@@ -54,11 +54,11 @@ function getDifficultyLevel(difficultyFactor){
 
 function updateScoreArrayAndHighScore(elapsedTime){
   const newScoreArray = JSON.parse(window.sessionStorage.getItem("scoreArray"))
-  console.log("printing newScoreArray", newScoreArray)
+ 
   newScoreArray.push(elapsedTime)
   const highScore = Math.max(newScoreArray)
   const indexOfHighScore = newScoreArray.indexOf(highScore)
-  console.log("highscore", highScore, "indexOfHighScore" , indexOfHighScore)
+  
   window.sessionStorage.setItem("scoreArray", JSON.stringify(newScoreArray))
   const highestScoreObject = JSON.parse(window.sessionStorage.getItem("highestScore"))
   highestScoreObject["index"] = indexOfHighScore
@@ -108,7 +108,7 @@ export default function MainBodyPage({callBack, isStopGame}){
   }
 
   const roundTimeOver = ()=>{
-    console.log("ayush ayush")
+  
     setIsGameOver(true)
     setRoundTime(0)
     const gameCount = window.sessionStorage.getItem("gameCount")
