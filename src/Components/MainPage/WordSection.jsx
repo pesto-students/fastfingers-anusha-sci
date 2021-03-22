@@ -1,87 +1,79 @@
-import React from "react";
-import "./WordSection.scss";
+import React, { useEffect, useState} from "react";
+import "./WordSection.scss"
 
-class WordSection extends React.Component {
-  constructor(props) {
-    console.log("Word Section Constructor called");
-    super(props);
-    this.state = {
-      currentWord: this.props.currentWord,
-      colorArray: new Array(this.props.currentWord.length).fill("black"),
-      userInput: ""
-    };
-  }
-
-  updateColorArrayWithHighlight(arr, charIndex, color) {
-    return arr.map((char, index) => {
-      if (index < charIndex) {
-        return char;
-      } else if (index === charIndex) {
-        return color;
-      } else {
-        return "black";
-      }
-    });
-  }
-
-  componentDidUpdate() {
-    if (this.state.currentWord !== this.props.currentWord) {
-      this.setState({
-        currentWord: this.props.currentWord,
-        colorArray: new Array(this.props.currentWord.length).fill("black"),
-        userInput: ""
-      });
+function updateHighlightColors(arr, charIndex, color) {
+  return arr.map((char, index) => {
+    if (index < charIndex) {
+      return char;
+    } else if (index === charIndex) {
+      return color;
+    } else {
+      return "white";
     }
-  }
+  });
+}
 
-  handleInputWord = (e) => {
+export default function WordSection({ currentWord, callBack }) {
+  
+  const [highlightColors, setHighlightColors] = useState([])
+  
+  const [userInput, setUserInput] = useState("");
+ 
+  const wordInputRef = React.createRef()
+
+  useEffect(()=>{
+    setHighlightColors(new Array(currentWord.length).fill("white"))
+  },[currentWord])
+
+  useEffect(() => {
+    if (userInput === currentWord) {
+      setUserInput("")
+      callBack();
+    }
+  },[callBack, userInput, currentWord]);
+
+  useEffect(()=>{
+    wordInputRef.current.focus()
+  })
+
+
+
+  const handleInputWord = (e) => {
     const inputLength = e.target.value.length;
     const currentInputChar = e.target.value.charAt(inputLength - 1);
-    var colorArray = this.state.colorArray;
-    if (currentInputChar === this.state.currentWord.charAt(inputLength - 1)) {
-      colorArray = this.updateColorArrayWithHighlight(
-        colorArray,
+    var colorArray1 = highlightColors;
+    if (currentInputChar === currentWord.charAt(inputLength - 1)) {
+      colorArray1 = updateHighlightColors(
+        colorArray1,
         inputLength - 1,
         "green"
       );
     } else {
-      colorArray = this.updateColorArrayWithHighlight(
-        colorArray,
+      colorArray1 = updateHighlightColors(
+        colorArray1,
         inputLength - 1,
         "red"
       );
     }
 
-    this.setState({ colorArray: colorArray, userInput: e.target.value }, () => {
-      if (this.state.userInput === this.state.currentWord) {
-        this.props.callBack();
-      }
-    });
+    setUserInput(e.target.value);
+    setHighlightColors(colorArray1);
   };
 
-  render() {
-    
-    const colorArray = this.state.colorArray;
-    const letterArray = this.state.currentWord.split("").map((char, index) => {
-      const color = colorArray[index];
-      return (
-        <span id={index} className={color}>
-          {char}
-        </span>
-      );
-    });
-
+  const letterArray = currentWord.split("").map((char, index) => {
+    const color = highlightColors[index];
     return (
-      <div className="word-section">
-        <h1>{letterArray}</h1>
-        <input
-          type="text"
-          value={this.state.userInput}
-          onChange={this.handleInputWord}
-        />
-      </div>
+      <span id={index} className={color}>
+        {char}
+      </span>
     );
-  }
+  });
+
+  return (
+    <div className="word-section">
+      <h1>{letterArray}</h1>
+      <input type="text" value={userInput} onChange={handleInputWord} ref = {wordInputRef} />
+    </div>
+  );
 }
 
-export default WordSection;

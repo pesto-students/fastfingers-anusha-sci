@@ -1,39 +1,42 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import "./ScoreBoard.scss";
+import ScoreFormatter from "./ScoreFormatter"
 
-class ScoreBoard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      highScore: "4:00",
-      scoreArray: ["1:14", "2:07", "1:56", "4:00"]
-    };
-  }
-  componentDidUpdate() {}
-  render() {
-    const { highScore, scoreArray } = this.state;
-    const indexOfHighScore = scoreArray.indexOf(highScore);
-    const scoreList = scoreArray.map((scoreItem, index) => {
-      return (
-        <li key={index}>
-          Game {index + 1} : {scoreItem}
-        </li>
-      );
-    });
-    scoreList.splice(indexOfHighScore, 1);
-    return (
-      <div className="scoreBoard-section">
-        <h3>SCORE BOARD</h3>
-        <ul>{scoreList}</ul>
-        <p>PERSONAL BEST</p>
-        <ul>
-          <li key={scoreList.length}>
-            Game {indexOfHighScore + 1} : {highScore}
-          </li>
-        </ul>
-      </div>
-    );
-  }
-}
 
-export default ScoreBoard;
+export default function ScoreBoard() {
+
+  const [scoreArray, setScoreArray] = useState(JSON.parse(window.sessionStorage.getItem("scoreArray"))) 
+  const [highestScore , setHighestScore] = useState(JSON.parse(window.sessionStorage.getItem("highestScore"))["score"])
+  const [highScoreIndex, setHighScoreIndex] = useState(JSON.parse(window.sessionStorage.getItem("highestScore"))["index"])
+  
+
+
+  useEffect(()=>{
+    setScoreArray(JSON.parse(window.sessionStorage.getItem("scoreArray")))
+    setHighestScore(JSON.parse(window.sessionStorage.getItem("highestScore"))["score"])
+    setHighScoreIndex(JSON.parse(window.sessionStorage.getItem("highestScore"))["index"])
+    console.log("in effect:")
+    console.log(JSON.parse(window.sessionStorage.getItem("highestScore"))["score"])
+    console.log(JSON.parse(window.sessionStorage.getItem("highestScore"))["index"])
+  } , [])
+
+  
+  
+  const scoreList = scoreArray.map((item, index)=>{
+   return(
+     <li key ={index} id ={index} >{`GAME ${index+1} : ${ScoreFormatter(item)} `} </li>
+   )
+ })
+
+ return (
+   <div className="scoreBoard-section">
+      <h4>SCORE BOARD</h4>
+      <ul>{scoreList}</ul>
+      <p>PERSONAL BEST:</p>
+      <ul><li key ={scoreArray.length+1} id ={scoreArray.length+1} >{`GAME ${highScoreIndex + 1 } : ${ScoreFormatter(highestScore)} `} </li></ul>
+   </div>
+
+ )
+
+ }
+

@@ -1,42 +1,54 @@
-import React from "react";
-import "./CircularTimer.scss";
+import React, {useEffect, useState} from "react"
+import "./CircularTimer.scss"
 
-export default class CircularTimer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      totalSeconds: 10,
-      seconds: 10,
-      strokedashoffset: 440
-    };
-  }
 
-  componentDidMount() {
-    const totalSeconds = this.state.totalSeconds;
-    var seconds = this.state.seconds;
-    seconds = 0;
-    this.interval = setInterval(() => {
-      if (seconds === totalSeconds) {
-        clearInterval(this.interval);
-      }
-      this.setState({
-        strokedashoffset: 440 - seconds * (440 / totalSeconds),
-        seconds: totalSeconds - seconds
-      });
-      seconds = seconds + 1;
-    }, 1000);
-  }
+export default function CircularTimer1({roundTime , endTime, callBack}) {
 
-  componentWillUnmount() {
-    if (this.interval) {
-      clearInterval(this.interval);
+  
+  const [strokeDashoffset , setStrokeDashoffset] = useState(440)
+  
+  useEffect(()=>{
+    
+    setStrokeDashoffset(440)
+  },[roundTime])
+ 
+
+  useEffect(()=>{
+    if (roundTime){
+      const interval = setInterval(() => {
+        setStrokeDashoffset( 440 - ((roundTime-(endTime-Date.now()))* (440/roundTime))  )
+           
+        if ((endTime - Date.now()) <= 0) {
+          clearInterval(interval);
+          setStrokeDashoffset(440)
+          callBack()
+        } 
+  
+        
+      }, 100);
+      return ()=>{
+        if (interval){
+          clearInterval(interval)
+        }
     }
-  }
 
-  render() {
-    return (
-      <div className="item">
-        <h2>{this.state.seconds}</h2>
+
+    }
+
+  },[roundTime,endTime])
+
+  let timeRemaining = Math.max(0,endTime -Date.now())
+  let remainingSeconds = Math.floor( timeRemaining/1000)
+  let remainingMilliseconds = Math.floor((timeRemaining % 1000)/10)
+  if (remainingMilliseconds < 10){
+    remainingMilliseconds = `0${remainingMilliseconds }`
+  }
+ 
+
+
+  return  (
+    <div className="item">
+        <h2>{`${remainingSeconds} : ${remainingMilliseconds}`}</h2>
 
         <svg id="circle-svg" width="160" height="160">
           <circle
@@ -56,11 +68,14 @@ export default class CircularTimer extends React.Component {
             strokeWidth="8"
             stroke="#ff5155"
             fill="none"
-            strokeDashoffset={this.state.strokedashoffset.toFixed()}
+            strokeDashoffset={strokeDashoffset.toFixed()}
             strokeDasharray="440"
+            
+         
           ></circle>
         </svg>
       </div>
-    );
-  }
+    
+  )
+
 }

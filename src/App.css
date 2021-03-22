@@ -1,12 +1,16 @@
 .App {
   text-align: center;
-  width: 100vw;
+  font-family: sans-serif;
+  text-align: center;
+  background-image: url("./background-img.svg"),
+    linear-gradient(to top, #063c47, #000000);
+  background-blend-mode: multiply;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
-.background-img{
-  width: 1920px;
-  opacity:0.43;
- 
-}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
