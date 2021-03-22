@@ -7,21 +7,28 @@
   margin: 0 0 0.5rem;
   padding: 10px 15px;
   opacity: 0.59;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
   background-color: #ffffff;
   font-size: 20px;
+  border: none;
 }
 
 .form-section select {
   width: 32%;
   margin: 0.5rem 0 0;
   padding: 10px 15px;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
   border: solid 1px #ffffff;
   appearance: none;
   font-size: 20px;
+  
+}
+
+.form-section p {
+  text-align: left;
+  margin-left: 34%;
 }
 
 .start-section{
@@ -34,4 +41,6 @@
 .start-section h2{
   margin-left: 1rem;
   cursor: pointer;
+  font-weight: 400;
 }
+

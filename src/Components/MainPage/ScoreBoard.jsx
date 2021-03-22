@@ -30,8 +30,15 @@ export default function ScoreBoard() {
    <div className="scoreBoard-section">
       <h4>SCORE BOARD</h4>
       <ul>{scoreList}</ul>
-      <p>PERSONAL BEST:</p>
-      <ul><li key ={scoreArray.length+1} id ={scoreArray.length+1} >{`GAME ${highScoreIndex + 1 } : ${ScoreFormatter(highestScore)} `} </li></ul>
+      {highestScore >-1 && <>
+        <p>PERSONAL BEST:</p>
+      <ul>
+        <li key ={scoreArray.length+1} id ={scoreArray.length+1} >
+          {`GAME ${highScoreIndex + 1 } : ${ScoreFormatter(highestScore)} `} 
+        </li>
+      </ul>
+      </>}
+
    </div>
 
  )

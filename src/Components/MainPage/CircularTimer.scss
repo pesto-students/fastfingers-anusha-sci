@@ -1,6 +1,6 @@
 #circle-anime-bg{
   transition: all 100ms linear;
-  // transform-origin: center;
+  
 }
 
 #circle-svg {
@@ -16,6 +16,8 @@
 .item h2 {
   text-align:center;
   position: absolute;
-  line-height: 125px;
+  line-height: 110px;
   width: 100%;
+  font-size: 2rem;
+  font-weight: 200;
 }

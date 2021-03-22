@@ -11,15 +11,15 @@ export default function Header() {
       <div className="header-section">
         <div>
           <p>
-            <FaUser />
+            <i><FaUser /></i>
             {playerName}
           </p>
           <p>
-            <FaGamepad /> LEVEL: {level}
+            <i><FaGamepad /></i>LEVEL: {level}
           </p>
         </div>
-        <div>
-          <p className="game-title">fast fingers</p>
+        <div id="game-title">
+          <p >fast fingers</p>
         </div>
       </div>
     );

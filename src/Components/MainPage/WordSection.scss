@@ -5,11 +5,14 @@
 
 .word-section input {
   width: 30%;
-  height: 30px;
+  padding: 10px 15px;
   opacity: 0.59;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
   background-color: #ffffff;
+  border: none;
+  font-size: 20px;
+  margin-top: 1rem;
 }
 .green{
   color: green

@@ -24,7 +24,7 @@ export default function LiveScore({isGameOver, callBack}){
 
   return(
     <div className="liveScore-section">
-      <h2>{`SCORE : ${ScoreFormatter(elapsedTime)}`}</h2>
+      <p>{`SCORE : ${ScoreFormatter(elapsedTime)}`}</p>
     </div>
   )
 

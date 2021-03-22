@@ -54,15 +54,19 @@ function getDifficultyLevel(difficultyFactor){
 
 function updateScoreArrayAndHighScore(elapsedTime){
   const newScoreArray = JSON.parse(window.sessionStorage.getItem("scoreArray"))
- 
-  newScoreArray.push(elapsedTime)
-  const highScore = Math.max(newScoreArray)
-  const indexOfHighScore = newScoreArray.indexOf(highScore)
-  
+  newScoreArray.push(Number(elapsedTime))
+  let max = -1
+  let index = 0
+  for (let i = 0; i < newScoreArray.length; i+= 1){
+    if (newScoreArray[i]> max){
+      max = newScoreArray[i]
+      index = i
+    }
+  }
   window.sessionStorage.setItem("scoreArray", JSON.stringify(newScoreArray))
   const highestScoreObject = JSON.parse(window.sessionStorage.getItem("highestScore"))
-  highestScoreObject["index"] = indexOfHighScore
-  highestScoreObject["score"] =  highScore
+  highestScoreObject["index"] = index
+  highestScoreObject["score"] =  max
   window.sessionStorage.setItem("highestScore", JSON.stringify(highestScoreObject))
 }
 

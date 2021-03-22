@@ -4,13 +4,15 @@ import { FaPlay } from "react-icons/fa";
 import MainPage from "../MainPage/MainPage";
 import GameLogo from "./GameLogo"
 
+const ENTER_KEY_CHAR_CODE = 13
+
 export default function Homepage() {
   const [playerName, setPlayerName] = useState("");
   const [difficultyLevel, setDifficultyLevel] = useState("EASY");
   const [isStarted, setIsStarted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  window.sessionStorage.setItem("playerName" , playerName)
+  window.sessionStorage.setItem("playerName" , playerName.toUpperCase())
   window.sessionStorage.setItem("difficultyLevel" , difficultyLevel)
   
 
@@ -34,6 +36,12 @@ export default function Homepage() {
     }
   };
 
+  const handleKeyPress = (e)=> {
+    if (e.charCode === ENTER_KEY_CHAR_CODE){
+      handleIsStarted()
+    }
+  }
+
   return isStarted ? (
     <MainPage />
   ) : (
@@ -48,8 +56,9 @@ export default function Homepage() {
               id="player-name"
               name="player-name"
               placeholder="TYPE YOUR NAME"
-              value={playerName}
+              value={playerName.toUpperCase()}
               onChange={handleNameChange}
+              onKeyPress ={handleKeyPress}
               required
             />
             <p>{errorMessage}</p>
