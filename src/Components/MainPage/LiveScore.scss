@@ -1,11 +1,20 @@
-.liveScore-section{
+.liveScore-section {
   text-align: right;
-  margin-top:0;
+  margin-top: 0;
   padding-right: 5rem;
   position: absolute;
   top: 6rem;
   right: 2rem;
-  p{
-  font-size: 1.8rem;
+  span {
+    font-size: 1.8rem;
   }
+}
+
+#liveScore-tag {
+  position: absolute;
+  right: 13.5rem;
+}
+#liveScore-value {
+  position: absolute;
+  right: 6.5rem;
 }

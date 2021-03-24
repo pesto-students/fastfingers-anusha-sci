@@ -1,8 +1,7 @@
 .App {
   text-align: center;
-  font-family: sans-serif;
   text-align: center;
-  background-image: url("./background-img.svg"),
+  background-image: url("/background-img.svg"),
     linear-gradient(to top, #063c47, #000000);
   background-blend-mode: multiply;
   background-position: center;

@@ -15,30 +15,39 @@ export default function EndPage({ gameScore }) {
   };
 
   const handleQuitGame = () => {
-    // window.sessionStorage.clear();
     setIsQuitGame(true);
   };
 
   if (isPlayAgain) {
     return <MainPage />;
   } else if (isQuitGame) {
-    return <Homepage />;
+    return (
+      <Homepage nameOfPlayer={window.sessionStorage.getItem("playerName")} />
+    );
   }
   return (
     <div>
       <Header />
-      <div className="score-display">
-        <h2>SCORE : GAME {window.sessionStorage.getItem("gameCount")} </h2>
-        <h1>{gameScore}</h1>
-      </div>
-      <div className="playAgain-section">
-        <i><FaRedoAlt onClick={handlePlayAgain} cursor="pointer" fontSize="1.5rem" /></i>
-        <h2 onClick={handlePlayAgain}>PLAY AGAIN</h2>
+      <div className="endPage-body">
+        <div className="score-display">
+          <h2>SCORE : GAME {window.sessionStorage.getItem("gameCount")} </h2>
+          <h1>{gameScore}</h1>
+        </div>
+        <div className="playAgain-section">
+          <i>
+            <FaRedoAlt
+              onClick={handlePlayAgain}
+              cursor="pointer"
+              fontSize="1.5rem"
+            />
+          </i>
+          <h2 onClick={handlePlayAgain}>PLAY AGAIN</h2>
+        </div>
       </div>
       <div className="quit-section">
-      <h2  onClick={handleQuitGame}>
-        QUIT
-      </h2>
+        <h2 onClick={handleQuitGame}>
+          <span>QUIT</span>
+        </h2>
       </div>
     </div>
   );

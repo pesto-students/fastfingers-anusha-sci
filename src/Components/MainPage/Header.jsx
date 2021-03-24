@@ -15,7 +15,7 @@ export default function Header() {
             {playerName}
           </p>
           <p>
-            <i><FaGamepad /></i>LEVEL: {level}
+            <i><FaGamepad /></i>LEVEL : {level}
           </p>
         </div>
         <div id="game-title">

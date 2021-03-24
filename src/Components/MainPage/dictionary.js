@@ -1,5 +1,5 @@
-const dictionary = 
-["aa",
+const dictionary = [
+  "aa",
   "aah",
   "aahed",
   "aahing",
@@ -172818,20 +172818,21 @@ const dictionary =
   "zymurgies",
   "zymurgy",
   "zyzzyva",
-  "zyzzyvas"
-]
+  "zyzzyvas",
+];
 
-const levelEasyDictionary = dictionary.filter((word) => 
-(word.length < 5))
+const levelEasyDictionary = dictionary.filter((word) => word.length < 5);
 
-const levelMediumDictionary = dictionary.filter((word) => 
-(word.length > 4) && (word.length < 9))
+const levelMediumDictionary = dictionary.filter(
+  (word) => word.length > 4 && word.length < 9
+);
 
-const levelHardDictionary = dictionary.filter((word) => (word.length > 8))
+const levelHardDictionary = dictionary.filter((word) => word.length > 8);
 
 const dictionaryObject = {
-"EASY" : levelEasyDictionary,
-"MEDIUM": levelMediumDictionary,
-"HARD":levelHardDictionary}
+  EASY: levelEasyDictionary,
+  MEDIUM: levelMediumDictionary,
+  HARD: levelHardDictionary,
+};
 
-export default dictionaryObject
+export default dictionaryObject;

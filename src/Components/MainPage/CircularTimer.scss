@@ -1,6 +1,5 @@
-#circle-anime-bg{
-  transition: all 100ms linear;
-  
+#circle-anime-bg {
+  transition: all 10ms linear;
 }
 
 #circle-svg {
@@ -14,10 +13,11 @@
 }
 
 .item h2 {
-  text-align:center;
+  text-align: center;
   position: absolute;
   line-height: 110px;
   width: 100%;
   font-size: 2rem;
   font-weight: 200;
+  letter-spacing: -1px;
 }

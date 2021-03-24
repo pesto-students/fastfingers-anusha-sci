@@ -3,9 +3,13 @@
   border-radius: 15px;
   min-height: 300px;
   margin-left: 3rem;
+  width: 170px;
 
-  h4{
-    font-weight: 300;
+  ul {
+    padding: 0 1.5rem;
+  }
+  h3 {
+    font-weight: 200;
   }
 
   li {
@@ -20,4 +24,3 @@
     width: fit-content;
   }
 }
-

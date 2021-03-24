@@ -1,5 +1,5 @@
-import React, { useEffect, useState} from "react";
-import "./WordSection.scss"
+import React, { useEffect, useState } from "react";
+import "./WordSection.scss";
 
 function updateHighlightColors(arr, charIndex, color) {
   return arr.map((char, index) => {
@@ -14,49 +14,55 @@ function updateHighlightColors(arr, charIndex, color) {
 }
 
 export default function WordSection({ currentWord, callBack }) {
-  
-  const [highlightColors, setHighlightColors] = useState([])
-  
-  const [userInput, setUserInput] = useState("");
- 
-  const wordInputRef = React.createRef()
+  const [highlightColors, setHighlightColors] = useState([]);
 
-  useEffect(()=>{
-    setHighlightColors(new Array(currentWord.length).fill("white"))
-  },[currentWord])
+  const [userInput, setUserInput] = useState("");
+
+  const wordInputRef = React.createRef();
+
+  const correctSound = new Audio("/keyboardPress-clickTrimmed.mp3");
+  // const correctSound = new Audio("/bad-beep-incorrect.mp3");
+  function playCorrectSound() {
+    correctSound.play();
+  }
+  const incorrectSound = new Audio("/bad-beep-incorrect-Trimmed.mp3");
+  function playIncorrectSound() {
+    incorrectSound.play();
+  }
+  useEffect(() => {
+    setHighlightColors(new Array(currentWord.length).fill("white"));
+  }, [currentWord]);
 
   useEffect(() => {
     if (userInput === currentWord) {
-      setUserInput("")
+      setUserInput("");
       callBack();
     }
-  },[callBack, userInput, currentWord]);
+  }, [callBack, userInput, currentWord]);
 
-  useEffect(()=>{
-    wordInputRef.current.focus()
-  })
-
-
+  useEffect(() => {
+    wordInputRef.current.focus();
+  });
 
   const handleInputWord = (e) => {
-    const inputLength = e.target.value.length;
-    const currentInputChar = e.target.value.charAt(inputLength - 1);
+    const inputLength = e.target.value.toUpperCase().length;
+    const currentInputChar = e.target.value
+      .toUpperCase()
+      .charAt(inputLength - 1);
     var colorArray1 = highlightColors;
     if (currentInputChar === currentWord.charAt(inputLength - 1)) {
+      playCorrectSound();
       colorArray1 = updateHighlightColors(
         colorArray1,
         inputLength - 1,
         "green"
       );
     } else {
-      colorArray1 = updateHighlightColors(
-        colorArray1,
-        inputLength - 1,
-        "red"
-      );
+      playIncorrectSound();
+      colorArray1 = updateHighlightColors(colorArray1, inputLength - 1, "red");
     }
 
-    setUserInput(e.target.value);
+    setUserInput(e.target.value.toUpperCase());
     setHighlightColors(colorArray1);
   };
 
@@ -72,8 +78,12 @@ export default function WordSection({ currentWord, callBack }) {
   return (
     <div className="word-section">
       <h1>{letterArray}</h1>
-      <input type="text" value={userInput} onChange={handleInputWord} ref = {wordInputRef} />
+      <input
+        type="text"
+        value={userInput}
+        onChange={handleInputWord}
+        ref={wordInputRef}
+      />
     </div>
   );
 }
-

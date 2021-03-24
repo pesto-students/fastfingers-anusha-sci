@@ -1,20 +1,31 @@
-*{
+* {
   box-sizing: border-box;
 }
+.form-section {
+  min-height: 236px;
+  position: relative;
+}
+.nameAndError-section {
+  min-height: 75px;
+}
 .form-section input {
-  
   width: 32%;
   margin: 0 0 0.5rem;
   padding: 10px 15px;
   opacity: 0.59;
   border-radius: 10px;
+  font-family: "Audiowide", cursive;
   box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
   background-color: #ffffff;
   font-size: 20px;
   border: none;
+
+  &:focus {
+    outline: none;
+  }
 }
 
-.form-section select {
+#difficulty_level {
   width: 32%;
   margin: 0.5rem 0 0;
   padding: 10px 15px;
@@ -23,7 +34,20 @@
   border: solid 1px #ffffff;
   appearance: none;
   font-size: 20px;
-  
+  font-family: "Audiowide", cursive;
+  background: transparent;
+  color: #97a5a7;
+  &:focus {
+    outline: none;
+  }
+}
+
+.dropdown-icon {
+  position: absolute;
+  font-size: 1.5rem;
+  color: #97a5a7;
+  right: 35%;
+  top: 40%;
 }
 
 .form-section p {
@@ -31,16 +55,14 @@
   margin-left: 34%;
 }
 
-.start-section{
+.start-section {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5rem;
 }
 
-.start-section h2{
+.start-section h2 {
   margin-left: 1rem;
   cursor: pointer;
   font-weight: 400;
 }
-
