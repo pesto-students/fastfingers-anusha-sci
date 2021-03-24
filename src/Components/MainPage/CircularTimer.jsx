@@ -38,7 +38,7 @@ export default function CircularTimer1({ roundTime, endTime, callBack }) {
 
   return (
     <div className="item">
-      <h2>{`${remainingSeconds} : ${remainingMilliseconds}`}</h2>
+      <h2>{`${remainingSeconds}:${remainingMilliseconds}`}</h2>
 
       <svg id="circle-svg" width="160" height="160">
         <circle
