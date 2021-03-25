@@ -2,12 +2,15 @@
   text-align: left;
   display: flex;
   align-items: center;
-  margin-top: 3rem;
-  margin-left: 3rem;
+
+  position: absolute;
+  left: 3rem;
+  bottom: 0.5rem;
 
   h2 {
     cursor: pointer;
     font-weight: 300;
     margin-left: 1rem;
+    font-size: 1.7rem;
   }
 }
