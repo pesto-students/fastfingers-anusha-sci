@@ -76,7 +76,7 @@ export default function Homepage({ nameOfPlayer }) {
               value={playerName}
               onChange={handleNameChange}
               onKeyPress={handleKeyPress}
-              autocomplete="off"
+              autoComplete="off"
               required
             />
             <p>{errorMessage}</p>

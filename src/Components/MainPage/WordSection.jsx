@@ -21,14 +21,15 @@ export default function WordSection({ currentWord, callBack }) {
   const wordInputRef = React.createRef();
 
   const correctSound = new Audio("/keyboardPress-clickTrimmed.mp3");
-  // const correctSound = new Audio("/bad-beep-incorrect.mp3");
   function playCorrectSound() {
     correctSound.play();
   }
+
   const incorrectSound = new Audio("/bad-beep-incorrect-Trimmed.mp3");
   function playIncorrectSound() {
     incorrectSound.play();
   }
+
   useEffect(() => {
     setHighlightColors(new Array(currentWord.length).fill("white"));
   }, [currentWord]);
