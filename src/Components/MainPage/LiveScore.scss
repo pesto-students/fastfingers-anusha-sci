@@ -1,0 +1,23 @@
+.liveScore-section {
+  text-align: right;
+  margin-top: 0;
+  padding-right: 5rem;
+  position: absolute;
+  top: 6rem;
+  right: 2rem;
+  span {
+    font-size: 1.8rem;
+  }
+}
+
+#liveScore-tag {
+  position: absolute;
+  right: 13.5rem;
+}
+#liveScore-value {
+  font-size: 2.1rem;
+  letter-spacing: 1px;
+  font-family: "Share Tech Mono", monospace;
+  position: absolute;
+  right: 6.5rem;
+}

@@ -1,0 +1,26 @@
+.dropdown-section {
+  text-align: left;
+  width: 32%;
+  border-radius: 0 0 15px 15px;
+  background-color: white;
+  margin: auto 34%;
+
+  ul {
+    padding: 1rem 0.3rem 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+li {
+  list-style: none;
+  color: #032228;
+  padding: 0.1rem 1rem;
+  margin-left: 0;
+}
+
+li:hover {
+  background-color: #053a45;
+  border-radius: 5px;
+  color: white;
+}

@@ -1,0 +1,26 @@
+.scoreBoard-section {
+  border: 1px solid #ff5155;
+  border-radius: 15px;
+  min-height: 300px;
+  margin-left: 3rem;
+  width: 170px;
+
+  ul {
+    padding: 0 1.5rem;
+  }
+  h3 {
+    font-weight: 200;
+  }
+
+  li {
+    list-style: none;
+    color: #ffffff;
+    width: fit-content;
+  }
+
+  p {
+    font-size: 11px;
+    padding-left: 1rem;
+    width: fit-content;
+  }
+}

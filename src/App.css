@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  text-align: center;
+  background-image: url("/background-img.svg"),
+    linear-gradient(to top, #063c47, #000000);
+  background-blend-mode: multiply;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 
 .App-logo {
